@@ -15,11 +15,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignIdFor(Team::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('status');
-            $table->json('env')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
