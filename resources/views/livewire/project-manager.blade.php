@@ -1,13 +1,13 @@
 <div>
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
-        <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
-            <div class="ml-4 mt-2">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">Projects</h3>
+    <div class="px-4 py-5 bg-white border-b border-gray-200 sm:px-6">
+        <div class="flex flex-wrap items-center justify-between -mt-2 -ml-4 sm:flex-nowrap">
+            <div class="mt-2 ml-4">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Projects</h3>
             </div>
-            <div class="ml-4 mt-2 flex-shrink-0">
+            <div class="flex-shrink-0 mt-2 ml-4">
                 <a href="{{ route('project.create') }}"
-                    class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create
+                    class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create
                     new project</a>
             </div>
         </div>
@@ -16,44 +16,47 @@
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                     Name</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                                     Status</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Create At</th>
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
+                                    Created At</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                                     Updated At</th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Edit</span>
+                                <th scope="col"
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
+                                    Actions
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="text-center bg-white divide-y divide-gray-200">
                             @foreach ($projects as $project)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $project->name }}</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-left text-gray-900 whitespace-nowrap">{{ $project->name }}</td>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $project->status }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $project->created_at }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $project->updated_at }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap"><span class="inline-flex items-center px-2 py-1 text-xs font-bold text-white uppercase bg-green-100 rounded-full whitespace-nowrap min-h-6 dark:bg-green-500">{{ $project->status }}</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $project->created_at->format('h:m:s d/m/Y') }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $project->updated_at->format('h:m:s d/m/Y') }}</td>
+                                    <td class="flex justify-between px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                        <div class="">
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
+                                        </div>
+                                        <div class="">
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
-
-                            <!-- More people... -->
                         </tbody>
                     </table>
                 </div>
