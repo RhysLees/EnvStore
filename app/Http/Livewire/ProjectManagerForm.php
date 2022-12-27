@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Enums\StatusEnum;
 use App\Models\Team;
+use App\Rules\TeamUnique;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -23,8 +24,13 @@ class ProjectManagerForm extends Component
 
     public function submit()
     {
+        $this->resetErrorBag();
+
         $this->validate([
-            'name' => 'required',
+            'name' => [
+                'required',
+                new TeamUnique($this->team, 'name'),
+            ],
         ]);
 
         $this->team->projects()->create([

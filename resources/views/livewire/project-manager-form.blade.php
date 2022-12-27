@@ -12,6 +12,7 @@
                             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                             <input wire:model="name" type="text" name="name" id="name" autocomplete="given-name"
                                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <x-jet-input-error for="name" class="mt-2" />
                         </div>
                     </div>
                 </div>
